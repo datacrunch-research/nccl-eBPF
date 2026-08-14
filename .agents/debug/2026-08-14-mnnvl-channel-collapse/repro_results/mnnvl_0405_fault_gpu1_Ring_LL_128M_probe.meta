@@ -1,0 +1,5 @@
+{"tag":"mnnvl_0405_fault_gpu1_Ring_LL_128M_probe","ts":"2026-08-14T12:17:30+00:00","test":"all_reduce_perf","world":8,"trays":"04 05",
+ "arm":"algo:Ring/LL","arm_kind":"envforce","policy":"","algo":"Ring","proto":"LL",
+ "profiler":"none","max_nch":"","iters":5,"warmup":2,"check":0,
+ "msg":"128M..128M f2","rep":1,"nccl":"NCCL version 2.29.7+cuda13.1","nccl_lib_dir":"/mnt/shared/home/dc/nccl-eBPF/nccl/build/lib",
+ "plugin_sha":"00fb633","bin":"/mnt/shared/home/dc/nccl-tests/build_mpi/all_reduce_perf"}

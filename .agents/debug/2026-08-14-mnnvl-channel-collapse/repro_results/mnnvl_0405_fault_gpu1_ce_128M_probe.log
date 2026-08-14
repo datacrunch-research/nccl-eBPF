@@ -1,0 +1,81 @@
+# nccl-tests version 2.18.5 nccl-headers=22903 nccl-library=22907
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 1 minBytes 134217728 maxBytes 134217728 step: 2(factor) warmup iters: 2 iters: 5 agg iters: 1 validation: 0 graph: 0 unalign: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 1189271 on pod4-gb300-3-tray04-f3 device  0 [0008:06:00] NVIDIA GB300
+#  Rank  1 Group  0 Pid 1189272 on pod4-gb300-3-tray04-f3 device  1 [0009:06:00] NVIDIA GB300
+#  Rank  2 Group  0 Pid 1189273 on pod4-gb300-3-tray04-f3 device  2 [0018:06:00] NVIDIA GB300
+#  Rank  3 Group  0 Pid 1189274 on pod4-gb300-3-tray04-f3 device  3 [0019:06:00] NVIDIA GB300
+#  Rank  4 Group  0 Pid 3024566 on pod4-gb300-3-tray05-f3 device  0 [0008:06:00] NVIDIA GB300
+#  Rank  5 Group  0 Pid 3024567 on pod4-gb300-3-tray05-f3 device  1 [0009:06:00] NVIDIA GB300
+#  Rank  6 Group  0 Pid 3024568 on pod4-gb300-3-tray05-f3 device  2 [0018:06:00] NVIDIA GB300
+#  Rank  7 Group  0 Pid 3024569 on pod4-gb300-3-tray05-f3 device  3 [0019:06:00] NVIDIA GB300
+NCCL version 2.29.7+cuda13.1
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray05-f3:3024568:3024568 [2] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray05-f3:3024569:3024569 [3] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray04-f3:1189271:1189271 [0] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray05-f3:3024567:3024567 [1] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray05-f3:3024566:3024566 [0] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray04-f3:1189274:1189274 [3] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray04-f3:1189272:1189272 [1] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray04-f3:1189273:1189273 [2] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong 
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)         
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray04-f3:1189271:1189271 [0] transport/shm.cc:627 NCCL WARN Cuda failure 1 'invalid argument'
+pod4-gb300-3-tray04-f3: Test NCCL failure all_reduce.cu:507 'unhandled cuda error (run with NCCL_DEBUG=INFO for details) / '
+ .. pod4-gb300-3-tray04-f3 pid 1189271: Test failure common.cu:517
+ .. pod4-gb300-3-tray04-f3 pid 1189271: Test failure common.cu:732
+ .. pod4-gb300-3-tray04-f3 pid 1189271: Test failure all_reduce.cu:574
+ .. pod4-gb300-3-tray04-f3 pid 1189271: Test failure common.cu:776
+ .. pod4-gb300-3-tray04-f3 pid 1189271: Test failure common.cu:1535
+ .. pod4-gb300-3-tray04-f3 pid 1189271: Test failure common.cu:1216
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray05-f3:3024566:3024566 [0] transport/shm.cc:627 NCCL WARN Cuda failure 1 'invalid argument'
+pod4-gb300-3-tray05-f3: Test NCCL failure all_reduce.cu:507 'unhandled cuda error (run with NCCL_DEBUG=INFO for details) / '
+ .. pod4-gb300-3-tray05-f3 pid 3024566: Test failure common.cu:517
+ .. pod4-gb300-3-tray05-f3 pid 3024566: Test failure common.cu:732
+ .. pod4-gb300-3-tray05-f3 pid 3024566: Test failure all_reduce.cu:574
+ .. pod4-gb300-3-tray05-f3 pid 3024566: Test failure common.cu:776
+ .. pod4-gb300-3-tray05-f3 pid 3024566: Test failure common.cu:1535
+ .. pod4-gb300-3-tray05-f3 pid 3024566: Test failure common.cu:1216
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray05-f3:3024569:3024569 [3] transport/shm.cc:627 NCCL WARN Cuda failure 1 'invalid argument'
+pod4-gb300-3-tray05-f3: Test NCCL failure all_reduce.cu:507 'unhandled cuda error (run with NCCL_DEBUG=INFO for details) / '
+ .. pod4-gb300-3-tray05-f3 pid 3024569: Test failure common.cu:517
+ .. pod4-gb300-3-tray05-f3 pid 3024569: Test failure common.cu:732
+ .. pod4-gb300-3-tray05-f3 pid 3024569: Test failure all_reduce.cu:574
+ .. pod4-gb300-3-tray05-f3 pid 3024569: Test failure common.cu:776
+ .. pod4-gb300-3-tray05-f3 pid 3024569: Test failure common.cu:1535
+ .. pod4-gb300-3-tray05-f3 pid 3024569: Test failure common.cu:1216
+
+[2026-08-14 12:18:18] pod4-gb300-3-tray04-f3:1189274:1189274 [3] transport/shm.cc:627 NCCL WARN Cuda failure 1 'invalid argument'
+pod4-gb300-3-tray04-f3: Test NCCL failure all_reduce.cu:507 'unhandled cuda error (run with NCCL_DEBUG=INFO for details) / '
+ .. pod4-gb300-3-tray04-f3 pid 1189274: Test failure common.cu:517
+ .. pod4-gb300-3-tray04-f3 pid 1189274: Test failure common.cu:732
+ .. pod4-gb300-3-tray04-f3 pid 1189274: Test failure all_reduce.cu:574
+ .. pod4-gb300-3-tray04-f3 pid 1189274: Test failure common.cu:776
+ .. pod4-gb300-3-tray04-f3 pid 1189274: Test failure common.cu:1535
+ .. pod4-gb300-3-tray04-f3 pid 1189274: Test failure common.cu:1216
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[3027,1],0]
+  Exit code:    3
+--------------------------------------------------------------------------

@@ -1,0 +1,1308 @@
+# nccl-tests version 2.18.5 nccl-headers=22903 nccl-library=22907
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 1 minBytes 536870912 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 0 graph: 0 unalign: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 1177002 on pod4-gb300-3-tray04-f3 device  0 [0008:06:00] NVIDIA GB300
+#  Rank  1 Group  0 Pid 1177003 on pod4-gb300-3-tray04-f3 device  1 [0009:06:00] NVIDIA GB300
+#  Rank  2 Group  0 Pid 1177004 on pod4-gb300-3-tray04-f3 device  2 [0018:06:00] NVIDIA GB300
+#  Rank  3 Group  0 Pid 1177005 on pod4-gb300-3-tray04-f3 device  3 [0019:06:00] NVIDIA GB300
+#  Rank  4 Group  0 Pid 3010748 on pod4-gb300-3-tray05-f3 device  0 [0008:06:00] NVIDIA GB300
+#  Rank  5 Group  0 Pid 3010749 on pod4-gb300-3-tray05-f3 device  1 [0009:06:00] NVIDIA GB300
+#  Rank  6 Group  0 Pid 3010750 on pod4-gb300-3-tray05-f3 device  2 [0018:06:00] NVIDIA GB300
+#  Rank  7 Group  0 Pid 3010751 on pod4-gb300-3-tray05-f3 device  3 [0019:06:00] NVIDIA GB300
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO cudaDriverVersion 13020
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL version 2.29.7+cuda13.1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL git version HEAD 36191590
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Comm config nvlinkCentricSched set to 1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO cudaDriverVersion 13020
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO cudaDriverVersion 13020
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO cudaDriverVersion 13020
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO cudaDriverVersion 13020
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO cudaDriverVersion 13020
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO cudaDriverVersion 13020
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO cudaDriverVersion 13020
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL version 2.29.7+cuda13.1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL git version HEAD 36191590
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL version 2.29.7+cuda13.1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL git version HEAD 36191590
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL version 2.29.7+cuda13.1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL git version HEAD 36191590
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL version 2.29.7+cuda13.1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL git version HEAD 36191590
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL version 2.29.7+cuda13.1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL git version HEAD 36191590
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL version 2.29.7+cuda13.1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL git version HEAD 36191590
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL version 2.29.7+cuda13.1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL git version HEAD 36191590
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Comm config nvlinkCentricSched set to 1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Comm config nvlinkCentricSched set to 1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Comm config nvlinkCentricSched set to 1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Comm config nvlinkCentricSched set to 1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Comm config nvlinkCentricSched set to 1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Comm config nvlinkCentricSched set to 1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Comm config nvlinkCentricSched set to 1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to bond0.225
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [RO]; OOB bond0.225:10.x.x.10<0>
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Initialized NET plugin IB
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [RO]; OOB bond0.225:10.x.x.10<0>
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Initialized NET plugin IB
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [RO]; OOB bond0.225:10.x.x.10<0>
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Initialized NET plugin IB
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [RO]; OOB bond0.225:10.x.x.10<0>
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Initialized NET plugin IB
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Assigned NET plugin IB to comm
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Assigned NET plugin IB to comm
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Using network IB
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Assigned NET plugin IB to comm
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Using network IB
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Assigned NET plugin IB to comm
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Using network IB
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Using network IB
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [RO]; OOB bond0.225:10.x.x.7<0>
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Initialized NET plugin IB
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [RO]; OOB bond0.225:10.x.x.7<0>
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Initialized NET plugin IB
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Assigned NET plugin IB to comm
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [RO]; OOB bond0.225:10.x.x.7<0>
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Initialized NET plugin IB
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Assigned NET plugin IB to comm
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NET/IB : Using [0]mlx5_bond_0:1/RoCE [RO]; OOB bond0.225:10.x.x.7<0>
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Initialized NET plugin IB
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Using network IB
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Using network IB
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Assigned NET plugin IB to comm
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Assigned NET plugin IB to comm
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Using network IB
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Assigned GIN plugin GIN_IB_GDAKI to comm
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Assigned RMA plugin GIN_IB_PROXY to comm
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Using network IB
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO DMA-BUF is available on GPU device 0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO [Rank 0] ncclCommInitRankConfig comm 0xaee4e94f38b0 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 806000 commId 0xREDACTED - Init START
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO DMA-BUF is available on GPU device 2
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO [Rank 6] ncclCommInitRankConfig comm 0xc6928b1b7210 rank 6 nranks 8 cudaDev 2 nvmlDev 2 busId 1806000 commId 0xREDACTED - Init START
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO DMA-BUF is available on GPU device 1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO [Rank 1] ncclCommInitRankConfig comm 0xac6eb2f26730 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 906000 commId 0xREDACTED - Init START
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO DMA-BUF is available on GPU device 2
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO [Rank 2] ncclCommInitRankConfig comm 0xbe73c2986c10 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId 1806000 commId 0xREDACTED - Init START
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO DMA-BUF is available on GPU device 3
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO [Rank 3] ncclCommInitRankConfig comm 0xb60f30db6a50 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId 1906000 commId 0xREDACTED - Init START
+
+[2026-08-14 12:11:24] pod4-gb300-3-tray04-f3:1177003:1177003 [1] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO RAS failed to establish a client listening socket at localhost:28028
+
+[2026-08-14 12:11:24] pod4-gb300-3-tray04-f3:1177004:1177004 [2] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO RAS failed to establish a client listening socket at localhost:28028
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO DMA-BUF is available on GPU device 3
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO [Rank 7] ncclCommInitRankConfig comm 0xb905d42d6ad0 rank 7 nranks 8 cudaDev 3 nvmlDev 3 busId 1906000 commId 0xREDACTED - Init START
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO DMA-BUF is available on GPU device 1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO [Rank 5] ncclCommInitRankConfig comm 0xc7a5ddf6f960 rank 5 nranks 8 cudaDev 1 nvmlDev 1 busId 906000 commId 0xREDACTED - Init START
+
+[2026-08-14 12:11:24] pod4-gb300-3-tray04-f3:1177002:1177002 [0] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO RAS failed to establish a client listening socket at localhost:28028
+
+[2026-08-14 12:11:24] pod4-gb300-3-tray05-f3:3010751:3010751 [3] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO RAS failed to establish a client listening socket at localhost:28028
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO DMA-BUF is available on GPU device 0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO [Rank 4] ncclCommInitRankConfig comm 0xc6963bd76ca0 rank 4 nranks 8 cudaDev 0 nvmlDev 0 busId 806000 commId 0xREDACTED - Init START
+
+[2026-08-14 12:11:24] pod4-gb300-3-tray05-f3:3010750:3010750 [2] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO RAS failed to establish a client listening socket at localhost:28028
+
+[2026-08-14 12:11:24] pod4-gb300-3-tray04-f3:1177005:1177005 [3] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO RAS failed to establish a client listening socket at localhost:28028
+
+[2026-08-14 12:11:24] pod4-gb300-3-tray05-f3:3010748:3010748 [0] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO RAS failed to establish a client listening socket at localhost:28028
+
+[2026-08-14 12:11:24] pod4-gb300-3-tray05-f3:3010749:3010749 [1] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO RAS failed to establish a client listening socket at localhost:28028
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL_CUMEM_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL_CUMEM_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL_CUMEM_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL_CUMEM_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL_CUMEM_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL_CUMEM_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_CUMEM_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL_CUMEM_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO MNNVL busId 0x1806000 fabric UUID REDACTED_FABRIC_UUID cliqueId 0xd26 state 3 healthMask 0x1aa
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO MNNVL busId 0x1806000 fabric UUID REDACTED_FABRIC_UUID cliqueId 0xd26 state 3 healthMask 0x1aa
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO MNNVL busId 0x806000 fabric UUID REDACTED_FABRIC_UUID cliqueId 0xd26 state 3 healthMask 0x1aa
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO MNNVL busId 0x1906000 fabric UUID REDACTED_FABRIC_UUID cliqueId 0xd26 state 3 healthMask 0x1aa
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO MNNVL busId 0x1906000 fabric UUID REDACTED_FABRIC_UUID cliqueId 0xd26 state 3 healthMask 0x1aa
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO MNNVL busId 0x806000 fabric UUID REDACTED_FABRIC_UUID cliqueId 0xd26 state 3 healthMask 0x1aa
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO MNNVL busId 0x906000 fabric UUID REDACTED_FABRIC_UUID cliqueId 0xd26 state 3 healthMask 0x1aa
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO MNNVL busId 0x906000 fabric UUID REDACTED_FABRIC_UUID cliqueId 0xd26 state 3 healthMask 0x1aa
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL_MNNVL_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL_MNNVL_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL_MNNVL_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL_MNNVL_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL_MNNVL_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL_MNNVL_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL_MNNVL_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_MNNVL_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO MNNVL 1 cliqueId d26 cliqueSize 8 cliqueRank 5
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO MNNVL 1 cliqueId d26 cliqueSize 8 cliqueRank 6
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO MNNVL 1 cliqueId d26 cliqueSize 8 cliqueRank 7
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO MNNVL 1 cliqueId d26 cliqueSize 8 cliqueRank 4
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO MNNVL 1 cliqueId d26 cliqueSize 8 cliqueRank 3
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO MNNVL 1 cliqueId d26 cliqueSize 8 cliqueRank 1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO MNNVL 1 cliqueId d26 cliqueSize 8 cliqueRank 2
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO MNNVL 1 cliqueId d26 cliqueSize 8 cliqueRank 0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL_TOPO_DUMP_FILE_RANK set by environment to 0.
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL_TOPO_DUMP_FILE_RANK set by environment to 0.
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL_TOPO_DUMP_FILE_RANK set by environment to 0.
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL_TOPO_DUMP_FILE_RANK set by environment to 0.
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL_TOPO_DUMP_FILE_RANK set by environment to 0.
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL_TOPO_DUMP_FILE_RANK set by environment to 0.
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL_TOPO_DUMP_FILE_RANK set by environment to 0.
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_TOPO_DUMP_FILE_RANK set by environment to 0.
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_TOPO_DUMP_FILE set by environment to /mnt/shared/home/dc/nccl-eBPF/docs/tmp/mnnvl_topo_0405_fault_gpu1_fused_repro.xml
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_TOPO_FILE set by environment to /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Loading topology file /tmp/nccl_mnnvl_fault_inject_20260814.xml
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Loading unnamed topology
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO TOPO/NET : Importing network plugins to topology
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ncclTopoPopulateNics : Filled mlx5_bond_0 in topo with pciPath=/sys/devices/pci0016:00/0016:00:00.0/0016:01:00.0 net=1 gin=1 keep=1 coll=(null)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO === System : maxBw 721.8 totalBw 721.8 ===
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO CPU/0-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + C2C[223.6] - GPU/0-806000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + C2C[223.6] - GPU/0-906000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + SYS[6.0] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[1.5] - PCI/0-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO              + PCI[96.0] - PCI/0-804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                            + PCI[96.0] - GPU/0-806000 (0)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[1.5] - PCI/0-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO              + PCI[96.0] - PCI/0-904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                            + PCI[96.0] - GPU/0-906000 (1)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO === System : maxBw 721.8 totalBw 721.8 ===
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO CPU/0-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + C2C[223.6] - GPU/0-806000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + C2C[223.6] - GPU/0-906000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + NVL[0.0] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO CPU/0-1 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + C2C[223.6] - GPU/0-1806000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + C2C[223.6] - GPU/0-1906000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[48.0] - NIC/0-1601000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO               + NET[12.5] - NET/0-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO               + NET[12.5] - GIN/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + SYS[6.0] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[1.5] - PCI/0-1801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO              + PCI[96.0] - PCI/0-1804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                            + PCI[96.0] - GPU/0-1806000 (2)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + SYS[6.0] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[1.5] - PCI/0-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO              + PCI[96.0] - PCI/0-804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                            + PCI[96.0] - GPU/0-806000 (0)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[1.5] - PCI/0-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO              + PCI[96.0] - PCI/0-904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                            + PCI[96.0] - GPU/0-906000 (1)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + NVL[0.0] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO CPU/0-1 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + C2C[223.6] - GPU/0-1806000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[1.5] - PCI/0-1901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO              + PCI[96.0] - PCI/0-1904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                            + PCI[96.0] - GPU/0-1906000 (3)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO CPU/1-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + C2C[223.6] - GPU/1-806000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + C2C[223.6] - GPU/1-906000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + SYS[6.0] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[1.5] - PCI/1-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO              + PCI[96.0] - PCI/1-804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                            + PCI[96.0] - GPU/1-806000 (4)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[1.5] - PCI/1-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO              + PCI[96.0] - PCI/1-904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + C2C[223.6] - GPU/0-1906000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[48.0] - NIC/0-1601000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO               + NET[12.5] - NET/0-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO               + NET[12.5] - GIN/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + SYS[6.0] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[1.5] - PCI/0-1801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO              + PCI[96.0] - PCI/0-1804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                            + PCI[96.0] - GPU/0-1806000 (2)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[1.5] - PCI/0-1901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO              + PCI[96.0] - PCI/0-1904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                            + PCI[96.0] - GPU/0-1906000 (3)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                            + PCI[96.0] - GPU/1-906000 (5)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO CPU/1-1 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + C2C[223.6] - GPU/1-1806000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + C2C[223.6] - GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[48.0] - NIC/1-1601000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO               + NET[12.5] - NET/1-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO               + NET[12.5] - GIN/1-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + SYS[6.0] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[1.5] - PCI/1-1801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO CPU/1-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + C2C[223.6] - GPU/1-806000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + C2C[223.6] - GPU/1-906000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + SYS[6.0] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[1.5] - PCI/1-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO              + PCI[96.0] - PCI/1-1804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                            + PCI[96.0] - GPU/1-1806000 (6)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO + PCI[1.5] - PCI/1-1901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO              + PCI[96.0] - PCI/1-1904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                            + PCI[96.0] - GPU/1-1906000 (7)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO              + PCI[96.0] - PCI/1-804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                            + PCI[96.0] - GPU/1-806000 (4)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[1.5] - PCI/1-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO              + PCI[96.0] - PCI/1-904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                            + PCI[96.0] - GPU/1-906000 (5)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO === System : maxBw 721.8 totalBw 721.8 ===
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO CPU/0-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO CPU/1-1 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + C2C[223.6] - GPU/1-1806000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + C2C[223.6] - GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[48.0] - NIC/1-1601000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO               + NET[12.5] - NET/1-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO               + NET[12.5] - GIN/1-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + SYS[6.0] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[1.5] - PCI/1-1801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO              + PCI[96.0] - PCI/1-1804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                            + PCI[96.0] - GPU/1-1806000 (6)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + C2C[223.6] - GPU/0-806000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + C2C[223.6] - GPU/0-906000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + SYS[6.0] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[1.5] - PCI/0-801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO              + PCI[96.0] - PCI/0-804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                            + PCI[96.0] - GPU/0-806000 (0)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ==========================================
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU/0-806000 :GPU/0-806000 (0/5000.0/LOC) GPU/0-906000 (2/223.6/C2C) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (5/12.5/PXN) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU/0-906000 :GPU/0-806000 (2/223.6/C2C) GPU/0-906000 (0/5000.0/LOC) GPU/0-1806000 (3/6.0/SYS) GPU/0-1906000 (3/6.0/SYS) GPU/1-806000 (1/0.0/NET) GPU/1-906000 (1/0.0/NET) GPU/1-1806000 (1/0.0/NET) GPU/1-1906000 (1/0.0/NET) NVS/0-0 (0/0.0/DIS) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (4/6.0/SYS) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU/0-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (0/5000.0/LOC) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU/0-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (0/5000.0/LOC) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[1.5] - PCI/0-901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO              + PCI[96.0] - PCI/0-904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                            + PCI[96.0] - GPU/0-906000 (1)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + NVL[0.0] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO CPU/0-1 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + C2C[223.6] - GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + C2C[223.6] - GPU/0-1906000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[48.0] - NIC/0-1601000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO               + NET[12.5] - NET/0-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO               + NET[12.5] - GIN/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + SYS[6.0] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[1.5] - PCI/0-1801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO              + PCI[96.0] - PCI/0-1804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                            + PCI[96.0] - GPU/0-1806000 (2)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[1.5] - PCI/0-1901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO              + PCI[96.0] - PCI/0-1904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                            + PCI[96.0] - GPU/0-1906000 (3)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO CPU/1-0 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + C2C[223.6] - GPU/1-806000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + C2C[223.6] - GPU/1-906000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU/1-806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (0/5000.0/LOC) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + SYS[6.0] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[1.5] - PCI/1-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO + PCI[1.5] - PCI/1-1901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO              + PCI[96.0] - PCI/1-1904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                            + PCI[96.0] - GPU/1-1906000 (7)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ==========================================
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU/0-806000 :GPU/0-806000 (0/5000.0/LOC) GPU/0-906000 (2/223.6/C2C) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (5/12.5/PXN) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU/0-906000 :GPU/0-806000 (2/223.6/C2C) GPU/0-906000 (0/5000.0/LOC) GPU/0-1806000 (3/6.0/SYS) GPU/0-1906000 (3/6.0/SYS) GPU/1-806000 (1/0.0/NET) GPU/1-906000 (1/0.0/NET) GPU/1-1806000 (1/0.0/NET) GPU/1-1906000 (1/0.0/NET) NVS/0-0 (0/0.0/DIS) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (4/6.0/SYS) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO              + PCI[96.0] - PCI/1-804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                            + PCI[96.0] - GPU/1-806000 (4)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[1.5] - PCI/1-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU/1-906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (0/5000.0/LOC) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU/1-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (0/5000.0/LOC) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GPU/1-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (0/5000.0/LOC) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NET/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/P2C) GPU/0-1906000 (3/12.5/P2C) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (0/5000.0/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (2/12.5/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NET/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/P2C) GPU/1-1906000 (3/12.5/P2C) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (0/5000.0/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (2/12.5/LOC) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO              + PCI[96.0] - PCI/1-904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                            + PCI[96.0] - GPU/1-906000 (5)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO CPU/1-1 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + C2C[223.6] - GPU/1-1806000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU/0-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (0/5000.0/LOC) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU/0-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (0/5000.0/LOC) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU/1-806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (0/5000.0/LOC) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + C2C[223.6] - GPU/1-1906000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[48.0] - NIC/1-1601000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO               + NET[12.5] - NET/1-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO               + NET[12.5] - GIN/1-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + SYS[6.0] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[1.5] - PCI/1-1801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO              + PCI[96.0] - PCI/1-1804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                            + PCI[96.0] - GPU/1-1806000 (6)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO + PCI[1.5] - PCI/1-1901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO              + PCI[96.0] - PCI/1-1904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                            + PCI[96.0] - GPU/1-1906000 (7)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ==========================================
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU/0-806000 :GPU/0-806000 (0/5000.0/LOC) GPU/0-906000 (2/223.6/C2C) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (5/12.5/PXN) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU/0-906000 :GPU/0-806000 (2/223.6/C2C) GPU/0-906000 (0/5000.0/LOC) GPU/0-1806000 (3/6.0/SYS) GPU/0-1906000 (3/6.0/SYS) GPU/1-806000 (1/0.0/NET) GPU/1-906000 (1/0.0/NET) GPU/1-1806000 (1/0.0/NET) GPU/1-1906000 (1/0.0/NET) NVS/0-0 (0/0.0/DIS) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (4/6.0/SYS) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU/1-906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (0/5000.0/LOC) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU/0-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (0/5000.0/LOC) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GIN/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/PHB) GPU/0-1906000 (3/12.5/PHB) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (2/12.5/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (0/5000.0/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO GIN/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/PHB) GPU/1-1906000 (3/12.5/PHB) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (2/12.5/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (0/5000.0/LOC) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU/0-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (0/5000.0/LOC) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU/1-806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (0/5000.0/LOC) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU/1-906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (0/5000.0/LOC) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU/1-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (0/5000.0/LOC) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GPU/1-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (0/5000.0/LOC) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NET/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/P2C) GPU/0-1906000 (3/12.5/P2C) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (0/5000.0/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (2/12.5/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU/1-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (0/5000.0/LOC) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GPU/1-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (0/5000.0/LOC) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NET/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/P2C) GPU/0-1906000 (3/12.5/P2C) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (0/5000.0/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (2/12.5/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NET/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/P2C) GPU/1-1906000 (3/12.5/P2C) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (0/5000.0/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (2/12.5/LOC) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NET/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/P2C) GPU/1-1906000 (3/12.5/P2C) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (0/5000.0/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (2/12.5/LOC) 
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 1 is 0-71. (GPU affinity = 0-71 ; CPU affinity = 0-143).
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GIN/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/PHB) GPU/0-1906000 (3/12.5/PHB) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (2/12.5/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (0/5000.0/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO GIN/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/PHB) GPU/1-1906000 (3/12.5/PHB) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (2/12.5/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (0/5000.0/LOC) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GIN/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/PHB) GPU/0-1906000 (3/12.5/PHB) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (2/12.5/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (0/5000.0/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO GIN/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/PHB) GPU/1-1906000 (3/12.5/PHB) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (2/12.5/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (0/5000.0/LOC) 
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 3 is 72-143. (GPU affinity = 72-143 ; CPU affinity = 0-143).
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NCCL_NVLS_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO NVLS multicast support is available on dev 3 (NVLS_NCHANNELS 24)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 2 is 72-143. (GPU affinity = 72-143 ; CPU affinity = 0-143).
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO === System : maxBw 721.8 totalBw 721.8 ===
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO CPU/0-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + C2C[223.6] - GPU/0-806000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + C2C[223.6] - GPU/0-906000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + SYS[6.0] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[1.5] - PCI/0-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NCCL_NVLS_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO NVLS multicast support is available on dev 2 (NVLS_NCHANNELS 24)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO              + PCI[96.0] - PCI/0-804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                            + PCI[96.0] - GPU/0-806000 (0)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[1.5] - PCI/0-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO              + PCI[96.0] - PCI/0-904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                            + PCI[96.0] - GPU/0-906000 (1)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + NVL[0.0] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO CPU/0-1 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + C2C[223.6] - GPU/0-1806000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + C2C[223.6] - GPU/0-1906000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[48.0] - NIC/0-1601000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO               + NET[12.5] - NET/0-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO               + NET[12.5] - GIN/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + SYS[6.0] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[1.5] - PCI/0-1801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO              + PCI[96.0] - PCI/0-1804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                            + PCI[96.0] - GPU/0-1806000 (2)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[1.5] - PCI/0-1901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO              + PCI[96.0] - PCI/0-1904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                            + PCI[96.0] - GPU/0-1906000 (3)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO CPU/1-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + C2C[223.6] - GPU/1-806000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + C2C[223.6] - GPU/1-906000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + SYS[6.0] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[1.5] - PCI/1-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO              + PCI[96.0] - PCI/1-804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                            + PCI[96.0] - GPU/1-806000 (4)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[1.5] - PCI/1-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO              + PCI[96.0] - PCI/1-904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                            + PCI[96.0] - GPU/1-906000 (5)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO CPU/1-1 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + C2C[223.6] - GPU/1-1806000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + C2C[223.6] - GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[48.0] - NIC/1-1601000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO               + NET[12.5] - NET/1-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO               + NET[12.5] - GIN/1-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + SYS[6.0] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[1.5] - PCI/1-1801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO              + PCI[96.0] - PCI/1-1804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NCCL_NVLS_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO NVLS multicast support is available on dev 1 (NVLS_NCHANNELS 24)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                            + PCI[96.0] - GPU/1-1806000 (6)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO + PCI[1.5] - PCI/1-1901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO              + PCI[96.0] - PCI/1-1904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                            + PCI[96.0] - GPU/1-1906000 (7)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ==========================================
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU/0-806000 :GPU/0-806000 (0/5000.0/LOC) GPU/0-906000 (2/223.6/C2C) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (5/12.5/PXN) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU/0-906000 :GPU/0-806000 (2/223.6/C2C) GPU/0-906000 (0/5000.0/LOC) GPU/0-1806000 (3/6.0/SYS) GPU/0-1906000 (3/6.0/SYS) GPU/1-806000 (1/0.0/NET) GPU/1-906000 (1/0.0/NET) GPU/1-1806000 (1/0.0/NET) GPU/1-1906000 (1/0.0/NET) NVS/0-0 (0/0.0/DIS) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (4/6.0/SYS) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU/0-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (0/5000.0/LOC) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU/0-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (0/5000.0/LOC) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU/1-806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (0/5000.0/LOC) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU/1-906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (0/5000.0/LOC) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU/1-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (0/5000.0/LOC) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GPU/1-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (0/5000.0/LOC) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NET/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/P2C) GPU/0-1906000 (3/12.5/P2C) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (0/5000.0/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (2/12.5/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NET/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/P2C) GPU/1-1906000 (3/12.5/P2C) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (0/5000.0/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (2/12.5/LOC) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GIN/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/PHB) GPU/0-1906000 (3/12.5/PHB) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (2/12.5/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (0/5000.0/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO GIN/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/PHB) GPU/1-1906000 (3/12.5/PHB) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (2/12.5/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (0/5000.0/LOC) 
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 3 is 72-143. (GPU affinity = 72-143 ; CPU affinity = 0-143).
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NCCL_NVLS_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO NVLS multicast support is available on dev 3 (NVLS_NCHANNELS 24)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO === System : maxBw 721.8 totalBw 721.8 ===
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO CPU/0-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + C2C[223.6] - GPU/0-806000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + C2C[223.6] - GPU/0-906000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + SYS[6.0] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[1.5] - PCI/0-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO              + PCI[96.0] - PCI/0-804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                            + PCI[96.0] - GPU/0-806000 (0)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[1.5] - PCI/0-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO              + PCI[96.0] - PCI/0-904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                            + PCI[96.0] - GPU/0-906000 (1)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + NVL[0.0] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO CPU/0-1 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + C2C[223.6] - GPU/0-1806000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + C2C[223.6] - GPU/0-1906000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[48.0] - NIC/0-1601000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO               + NET[12.5] - NET/0-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO               + NET[12.5] - GIN/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + SYS[6.0] - CPU/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[1.5] - PCI/0-1801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO              + PCI[96.0] - PCI/0-1804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                            + PCI[96.0] - GPU/0-1806000 (2)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[1.5] - PCI/0-1901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO              + PCI[96.0] - PCI/0-1904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                            + PCI[96.0] - GPU/0-1906000 (3)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO CPU/1-0 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + C2C[223.6] - GPU/1-806000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + C2C[223.6] - GPU/1-906000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + SYS[6.0] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[1.5] - PCI/1-801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO              + PCI[96.0] - PCI/1-804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                            + PCI[96.0] - GPU/1-806000 (4)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[1.5] - PCI/1-901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO              + PCI[96.0] - PCI/1-904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                            + PCI[96.0] - GPU/1-906000 (5)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO CPU/1-1 (3/-1/-1)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + C2C[223.6] - GPU/1-1806000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + C2C[223.6] - GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[48.0] - NIC/1-1601000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO               + NET[12.5] - NET/1-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO               + NET[12.5] - GIN/1-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + SYS[6.0] - CPU/1-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[1.5] - PCI/1-1801000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO              + PCI[96.0] - PCI/1-1804000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                            + PCI[96.0] - GPU/1-1806000 (6)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO + PCI[1.5] - PCI/1-1901000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO              + PCI[96.0] - PCI/1-1904000 (15b3197c00000000)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                            + PCI[96.0] - GPU/1-1906000 (7)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ==========================================
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU/0-806000 :GPU/0-806000 (0/5000.0/LOC) GPU/0-906000 (2/223.6/C2C) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (5/12.5/PXN) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU/0-906000 :GPU/0-806000 (2/223.6/C2C) GPU/0-906000 (0/5000.0/LOC) GPU/0-1806000 (3/6.0/SYS) GPU/0-1906000 (3/6.0/SYS) GPU/1-806000 (1/0.0/NET) GPU/1-906000 (1/0.0/NET) GPU/1-1806000 (1/0.0/NET) GPU/1-1906000 (1/0.0/NET) NVS/0-0 (0/0.0/DIS) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (4/6.0/SYS) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU/0-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (0/5000.0/LOC) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU/0-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (0/5000.0/LOC) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU/1-806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (0/5000.0/LOC) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU/1-906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (0/5000.0/LOC) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU/1-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (0/5000.0/LOC) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GPU/1-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (0/5000.0/LOC) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NET/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/P2C) GPU/0-1906000 (3/12.5/P2C) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (0/5000.0/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (2/12.5/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NET/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/P2C) GPU/1-1906000 (3/12.5/P2C) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (0/5000.0/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (2/12.5/LOC) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GIN/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/PHB) GPU/0-1906000 (3/12.5/PHB) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (2/12.5/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (0/5000.0/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO GIN/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/PHB) GPU/1-1906000 (3/12.5/PHB) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (2/12.5/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (0/5000.0/LOC) 
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 0 is 0-71. (GPU affinity = 0-71 ; CPU affinity = 0-143).
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NCCL_NVLS_ENABLE set by environment to 1.
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO NVLS multicast support is available on dev 0 (NVLS_NCHANNELS 24)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO === System : maxBw 721.8 totalBw 721.8 ===
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO CPU/0-0 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + C2C[223.6] - GPU/0-806000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + C2C[223.6] - GPU/0-906000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + SYS[6.0] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[1.5] - PCI/0-801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO              + PCI[96.0] - PCI/0-804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                            + PCI[96.0] - GPU/0-806000 (0)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[1.5] - PCI/0-901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO              + PCI[96.0] - PCI/0-904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                            + PCI[96.0] - GPU/0-906000 (1)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + NVL[0.0] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO CPU/0-1 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + C2C[223.6] - GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + C2C[223.6] - GPU/0-1906000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[48.0] - NIC/0-1601000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO               + NET[12.5] - NET/0-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO               + NET[12.5] - GIN/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + SYS[6.0] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[1.5] - PCI/0-1801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO              + PCI[96.0] - PCI/0-1804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                            + PCI[96.0] - GPU/0-1806000 (2)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[1.5] - PCI/0-1901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO              + PCI[96.0] - PCI/0-1904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                            + PCI[96.0] - GPU/0-1906000 (3)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO CPU/1-0 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + C2C[223.6] - GPU/1-806000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + C2C[223.6] - GPU/1-906000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + SYS[6.0] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[1.5] - PCI/1-801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO              + PCI[96.0] - PCI/1-804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                            + PCI[96.0] - GPU/1-806000 (4)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[1.5] - PCI/1-901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO              + PCI[96.0] - PCI/1-904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                            + PCI[96.0] - GPU/1-906000 (5)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO CPU/1-1 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + C2C[223.6] - GPU/1-1806000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + C2C[223.6] - GPU/1-1906000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[48.0] - NIC/1-1601000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO               + NET[12.5] - NET/1-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO               + NET[12.5] - GIN/1-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + SYS[6.0] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[1.5] - PCI/1-1801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO              + PCI[96.0] - PCI/1-1804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                            + PCI[96.0] - GPU/1-1806000 (6)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO + PCI[1.5] - PCI/1-1901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO              + PCI[96.0] - PCI/1-1904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                            + PCI[96.0] - GPU/1-1906000 (7)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ==========================================
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU/0-806000 :GPU/0-806000 (0/5000.0/LOC) GPU/0-906000 (2/223.6/C2C) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (5/12.5/PXN) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU/0-906000 :GPU/0-806000 (2/223.6/C2C) GPU/0-906000 (0/5000.0/LOC) GPU/0-1806000 (3/6.0/SYS) GPU/0-1906000 (3/6.0/SYS) GPU/1-806000 (1/0.0/NET) GPU/1-906000 (1/0.0/NET) GPU/1-1806000 (1/0.0/NET) GPU/1-1906000 (1/0.0/NET) NVS/0-0 (0/0.0/DIS) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (4/6.0/SYS) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU/0-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (0/5000.0/LOC) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU/0-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (0/5000.0/LOC) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU/1-806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (0/5000.0/LOC) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU/1-906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (0/5000.0/LOC) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU/1-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (0/5000.0/LOC) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GPU/1-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (0/5000.0/LOC) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NET/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/P2C) GPU/0-1906000 (3/12.5/P2C) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (0/5000.0/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (2/12.5/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NET/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/P2C) GPU/1-1906000 (3/12.5/P2C) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (0/5000.0/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (2/12.5/LOC) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GIN/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/PHB) GPU/0-1906000 (3/12.5/PHB) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (2/12.5/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (0/5000.0/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO GIN/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/PHB) GPU/1-1906000 (3/12.5/PHB) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (2/12.5/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (0/5000.0/LOC) 
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 2 is 72-143. (GPU affinity = 72-143 ; CPU affinity = 0-143).
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NCCL_NVLS_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO NVLS multicast support is available on dev 2 (NVLS_NCHANNELS 24)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO === System : maxBw 721.8 totalBw 721.8 ===
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO CPU/0-0 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + C2C[223.6] - GPU/0-806000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + C2C[223.6] - GPU/0-906000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + SYS[6.0] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[1.5] - PCI/0-801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO              + PCI[96.0] - PCI/0-804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                            + PCI[96.0] - GPU/0-806000 (0)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[1.5] - PCI/0-901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO              + PCI[96.0] - PCI/0-904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                            + PCI[96.0] - GPU/0-906000 (1)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + NVL[0.0] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO CPU/0-1 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + C2C[223.6] - GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + C2C[223.6] - GPU/0-1906000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[48.0] - NIC/0-1601000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO               + NET[12.5] - NET/0-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO               + NET[12.5] - GIN/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + SYS[6.0] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[1.5] - PCI/0-1801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO              + PCI[96.0] - PCI/0-1804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                            + PCI[96.0] - GPU/0-1806000 (2)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[1.5] - PCI/0-1901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO              + PCI[96.0] - PCI/0-1904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                            + PCI[96.0] - GPU/0-1906000 (3)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO CPU/1-0 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + C2C[223.6] - GPU/1-806000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + C2C[223.6] - GPU/1-906000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + SYS[6.0] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[1.5] - PCI/1-801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO              + PCI[96.0] - PCI/1-804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                            + PCI[96.0] - GPU/1-806000 (4)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[1.5] - PCI/1-901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO              + PCI[96.0] - PCI/1-904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                            + PCI[96.0] - GPU/1-906000 (5)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO CPU/1-1 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + C2C[223.6] - GPU/1-1806000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + C2C[223.6] - GPU/1-1906000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[48.0] - NIC/1-1601000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO               + NET[12.5] - NET/1-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO               + NET[12.5] - GIN/1-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + SYS[6.0] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[1.5] - PCI/1-1801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO              + PCI[96.0] - PCI/1-1804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                            + PCI[96.0] - GPU/1-1806000 (6)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO + PCI[1.5] - PCI/1-1901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO              + PCI[96.0] - PCI/1-1904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                            + PCI[96.0] - GPU/1-1906000 (7)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ==========================================
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU/0-806000 :GPU/0-806000 (0/5000.0/LOC) GPU/0-906000 (2/223.6/C2C) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (5/12.5/PXN) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU/0-906000 :GPU/0-806000 (2/223.6/C2C) GPU/0-906000 (0/5000.0/LOC) GPU/0-1806000 (3/6.0/SYS) GPU/0-1906000 (3/6.0/SYS) GPU/1-806000 (1/0.0/NET) GPU/1-906000 (1/0.0/NET) GPU/1-1806000 (1/0.0/NET) GPU/1-1906000 (1/0.0/NET) NVS/0-0 (0/0.0/DIS) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (4/6.0/SYS) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU/0-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (0/5000.0/LOC) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU/0-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (0/5000.0/LOC) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU/1-806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (0/5000.0/LOC) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU/1-906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (0/5000.0/LOC) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU/1-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (0/5000.0/LOC) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GPU/1-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (0/5000.0/LOC) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NET/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/P2C) GPU/0-1906000 (3/12.5/P2C) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (0/5000.0/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (2/12.5/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NET/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/P2C) GPU/1-1906000 (3/12.5/P2C) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (0/5000.0/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (2/12.5/LOC) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GIN/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/PHB) GPU/0-1906000 (3/12.5/PHB) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (2/12.5/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (0/5000.0/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO GIN/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/PHB) GPU/1-1906000 (3/12.5/PHB) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (2/12.5/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (0/5000.0/LOC) 
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 1 is 0-71. (GPU affinity = 0-71 ; CPU affinity = 0-143).
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NCCL_NVLS_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO NVLS multicast support is available on dev 1 (NVLS_NCHANNELS 24)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Could not find a path for pattern 4, falling back to simple order
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Pattern 4, crossNic 0, nChannels 1, bw 0.100000/0.100000, type SYS/SYS, sameChannels 1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO  0 : GPU/0-806000 GPU/0-906000 GPU/0-1806000 GPU/0-1906000 GPU/1-806000 GPU/1-906000 GPU/1-1806000 GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Pattern 1, crossNic 0, nChannels 1, bw 90.000000/90.000000, type C2C/PIX, sameChannels 1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO  0 : GPU/0-906000 GPU/0-806000 GPU/1-1906000 GPU/1-1806000 GPU/1-906000 GPU/1-806000 GPU/0-1906000 GPU/0-1806000
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Pattern 5, crossNic 0, nChannels 0, bw 0.000000/0.000000, type NVL/PIX, sameChannels 0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Could not find a path for pattern 4, falling back to simple order
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Pattern 4, crossNic 0, nChannels 1, bw 0.100000/0.100000, type SYS/SYS, sameChannels 1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO  0 : GPU/0-806000 GPU/0-906000 GPU/0-1806000 GPU/0-1906000 GPU/1-806000 GPU/1-906000 GPU/1-1806000 GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Could not find a path for pattern 4, falling back to simple order
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Pattern 4, crossNic 0, nChannels 1, bw 0.100000/0.100000, type SYS/SYS, sameChannels 1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Could not find a path for pattern 4, falling back to simple order
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO  0 : GPU/0-806000 GPU/0-906000 GPU/0-1806000 GPU/0-1906000 GPU/1-806000 GPU/1-906000 GPU/1-1806000 GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Pattern 1, crossNic 0, nChannels 1, bw 90.000000/90.000000, type C2C/PIX, sameChannels 1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO  0 : GPU/0-906000 GPU/0-806000 GPU/1-1906000 GPU/1-1806000 GPU/1-906000 GPU/1-806000 GPU/0-1906000 GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Pattern 4, crossNic 0, nChannels 1, bw 0.100000/0.100000, type SYS/SYS, sameChannels 1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO  0 : GPU/0-806000 GPU/0-906000 GPU/0-1806000 GPU/0-1906000 GPU/1-806000 GPU/1-906000 GPU/1-1806000 GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Pattern 1, crossNic 0, nChannels 1, bw 90.000000/90.000000, type C2C/PIX, sameChannels 1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO  0 : GPU/0-906000 GPU/0-806000 GPU/1-1906000 GPU/1-1806000 GPU/1-906000 GPU/1-806000 GPU/0-1906000 GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Pattern 1, crossNic 0, nChannels 1, bw 90.000000/90.000000, type C2C/PIX, sameChannels 1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO  0 : GPU/0-906000 GPU/0-806000 GPU/1-1906000 GPU/1-1806000 GPU/1-906000 GPU/1-806000 GPU/0-1906000 GPU/0-1806000
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Pattern 5, crossNic 0, nChannels 0, bw 0.000000/0.000000, type NVL/PIX, sameChannels 0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Pattern 5, crossNic 0, nChannels 0, bw 0.000000/0.000000, type NVL/PIX, sameChannels 0
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Pattern 5, crossNic 0, nChannels 0, bw 0.000000/0.000000, type NVL/PIX, sameChannels 0
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Could not find a path for pattern 4, falling back to simple order
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Pattern 4, crossNic 0, nChannels 1, bw 0.100000/0.100000, type SYS/SYS, sameChannels 1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO  0 : GPU/0-806000 GPU/0-906000 GPU/0-1806000 GPU/0-1906000 GPU/1-806000 GPU/1-906000 GPU/1-1806000 GPU/1-1906000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Pattern 1, crossNic 0, nChannels 1, bw 90.000000/90.000000, type C2C/PIX, sameChannels 1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO  0 : GPU/0-906000 GPU/0-806000 GPU/1-1906000 GPU/1-1806000 GPU/1-906000 GPU/1-806000 GPU/0-1906000 GPU/0-1806000
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Pattern 5, crossNic 0, nChannels 0, bw 0.000000/0.000000, type NVL/PIX, sameChannels 0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Could not find a path for pattern 4, falling back to simple order
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Pattern 4, crossNic 0, nChannels 1, bw 0.100000/0.100000, type SYS/SYS, sameChannels 1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO  0 : GPU/0-806000 GPU/0-906000 GPU/0-1806000 GPU/0-1906000 GPU/1-806000 GPU/1-906000 GPU/1-1806000 GPU/1-1906000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Pattern 1, crossNic 0, nChannels 1, bw 90.000000/90.000000, type C2C/PIX, sameChannels 1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO  0 : GPU/0-906000 GPU/0-806000 GPU/1-1906000 GPU/1-1806000 GPU/1-906000 GPU/1-806000 GPU/0-1906000 GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Pattern 5, crossNic 0, nChannels 0, bw 0.000000/0.000000, type NVL/PIX, sameChannels 0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-8413184 (rank 0) - NET/0-0 ( using PXN via GPU/0-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-25190400 (rank 2) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/0-26238976 (rank 3) - NET/0-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-8413184 (rank 4) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-9461760 (rank 5) - NET/1-0 ( using PXN via GPU/1-25190400, distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-25190400 (rank 6) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU Direct RDMA Enabled for GPU/1-26238976 (rank 7) - NET/1-0 (distance 6 <= 6, read 0, mode Default)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO === System : maxBw 721.8 totalBw 721.8 ===
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO CPU/0-0 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + C2C[223.6] - GPU/0-806000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + C2C[223.6] - GPU/0-906000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + SYS[6.0] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[1.5] - PCI/0-801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO              + PCI[96.0] - PCI/0-804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                            + PCI[96.0] - GPU/0-806000 (0)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[1.5] - PCI/0-901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO              + PCI[96.0] - PCI/0-904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                            + PCI[96.0] - GPU/0-906000 (1)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + C2C[223.6] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + NVL[0.0] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO CPU/0-1 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + C2C[223.6] - GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + C2C[223.6] - GPU/0-1906000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[48.0] - NIC/0-1601000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO               + NET[12.5] - NET/0-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO               + NET[12.5] - GIN/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + SYS[6.0] - CPU/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[1.5] - PCI/0-1801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO              + PCI[96.0] - PCI/0-1804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                            + PCI[96.0] - GPU/0-1806000 (2)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[1.5] - PCI/0-1901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO              + PCI[96.0] - PCI/0-1904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                            + PCI[96.0] - GPU/0-1906000 (3)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + C2C[223.6] - CPU/0-1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO CPU/1-0 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + C2C[223.6] - GPU/1-806000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + C2C[223.6] - GPU/1-906000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + SYS[6.0] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[1.5] - PCI/1-801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO              + PCI[96.0] - PCI/1-804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                            + PCI[96.0] - GPU/1-806000 (4)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[1.5] - PCI/1-901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO              + PCI[96.0] - PCI/1-904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                            + PCI[96.0] - GPU/1-906000 (5)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + C2C[223.6] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO CPU/1-1 (3/-1/-1)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + C2C[223.6] - GPU/1-1806000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + C2C[223.6] - GPU/1-1906000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[48.0] - NIC/1-1601000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO               + NET[12.5] - NET/1-0 (0/6c4ed600032d7970/1/12.500000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO               + NET[12.5] - GIN/1-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + SYS[6.0] - CPU/1-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[1.5] - PCI/1-1801000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO              + PCI[96.0] - PCI/1-1804000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                            + PCI[96.0] - GPU/1-1806000 (6)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO + PCI[1.5] - PCI/1-1901000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO              + PCI[96.0] - PCI/1-1904000 (15b3197c00000000)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                            + PCI[96.0] - GPU/1-1906000 (7)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + NVL[721.8] - NVS/0-0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO                                          + C2C[223.6] - CPU/1-1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ==========================================
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU/0-806000 :GPU/0-806000 (0/5000.0/LOC) GPU/0-906000 (2/223.6/C2C) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (5/12.5/PXN) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU/0-906000 :GPU/0-806000 (2/223.6/C2C) GPU/0-906000 (0/5000.0/LOC) GPU/0-1806000 (3/6.0/SYS) GPU/0-1906000 (3/6.0/SYS) GPU/1-806000 (1/0.0/NET) GPU/1-906000 (1/0.0/NET) GPU/1-1806000 (1/0.0/NET) GPU/1-1906000 (1/0.0/NET) NVS/0-0 (0/0.0/DIS) CPU/0-0 (1/223.6/C2C) CPU/0-1 (2/6.0/SYS) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (4/6.0/SYS) NET/1-0 (0/0.0/DIS) GIN/0-0 (4/6.0/SYS) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU/0-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (0/5000.0/LOC) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU/0-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (3/6.0/SYS) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (0/5000.0/LOC) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (2/6.0/SYS) CPU/0-1 (1/223.6/C2C) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (3/12.5/P2C) NET/1-0 (0/0.0/DIS) GIN/0-0 (3/12.5/PHB) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU/1-806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (0/5000.0/LOC) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU/1-906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (0/5000.0/LOC) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (1/223.6/C2C) CPU/1-1 (2/6.0/SYS) NET/0-0 (0/0.0/DIS) NET/1-0 (5/12.5/PXN) GIN/0-0 (0/0.0/DIS) GIN/1-0 (4/6.0/SYS) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU/1-1806000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (0/5000.0/LOC) GPU/1-1906000 (2/721.8/NVL) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GPU/1-1906000 :GPU/0-806000 (2/721.8/NVL) GPU/0-906000 (1/0.0/NET) GPU/0-1806000 (2/721.8/NVL) GPU/0-1906000 (2/721.8/NVL) GPU/1-806000 (2/721.8/NVL) GPU/1-906000 (2/721.8/NVL) GPU/1-1806000 (2/721.8/NVL) GPU/1-1906000 (0/5000.0/LOC) NVS/0-0 (1/721.8/NVL) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (2/6.0/SYS) CPU/1-1 (1/223.6/C2C) NET/0-0 (0/0.0/DIS) NET/1-0 (3/12.5/P2C) GIN/0-0 (0/0.0/DIS) GIN/1-0 (3/12.5/PHB) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NET/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/P2C) GPU/0-1906000 (3/12.5/P2C) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (0/5000.0/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (2/12.5/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NET/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/P2C) GPU/1-1906000 (3/12.5/P2C) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (0/5000.0/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (2/12.5/LOC) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GIN/0-0 :GPU/0-806000 (4/6.0/SYS) GPU/0-906000 (4/6.0/SYS) GPU/0-1806000 (3/12.5/PHB) GPU/0-1906000 (3/12.5/PHB) GPU/1-806000 (0/0.0/DIS) GPU/1-906000 (0/0.0/DIS) GPU/1-1806000 (0/0.0/DIS) GPU/1-1906000 (0/0.0/DIS) CPU/0-0 (3/6.0/SYS) CPU/0-1 (2/12.5/PHB) CPU/1-0 (0/0.0/DIS) CPU/1-1 (0/0.0/DIS) NET/0-0 (2/12.5/LOC) NET/1-0 (0/0.0/DIS) GIN/0-0 (0/5000.0/LOC) GIN/1-0 (0/0.0/DIS) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO GIN/1-0 :GPU/0-806000 (0/0.0/DIS) GPU/0-906000 (0/0.0/DIS) GPU/0-1806000 (0/0.0/DIS) GPU/0-1906000 (0/0.0/DIS) GPU/1-806000 (4/6.0/SYS) GPU/1-906000 (4/6.0/SYS) GPU/1-1806000 (3/12.5/PHB) GPU/1-1906000 (3/12.5/PHB) CPU/0-0 (0/0.0/DIS) CPU/0-1 (0/0.0/DIS) CPU/1-0 (3/6.0/SYS) CPU/1-1 (2/12.5/PHB) NET/0-0 (0/0.0/DIS) NET/1-0 (2/12.5/LOC) GIN/0-0 (0/0.0/DIS) GIN/1-0 (0/5000.0/LOC) 
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 0 is 0-71. (GPU affinity = 0-71 ; CPU affinity = 0-143).
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NCCL_NVLS_ENABLE set by environment to 1.
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO NVLS multicast support is available on dev 0 (NVLS_NCHANNELS 24)
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Could not find a path for pattern 4, falling back to simple order
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Pattern 4, crossNic 0, nChannels 1, bw 0.100000/0.100000, type SYS/SYS, sameChannels 1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO  0 : GPU/0-806000 GPU/0-906000 GPU/0-1806000 GPU/0-1906000 GPU/1-806000 GPU/1-906000 GPU/1-1806000 GPU/1-1906000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Pattern 1, crossNic 0, nChannels 1, bw 90.000000/90.000000, type C2C/PIX, sameChannels 1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO  0 : GPU/0-906000 GPU/0-806000 GPU/1-1906000 GPU/1-1806000 GPU/1-906000 GPU/1-806000 GPU/0-1906000 GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Pattern 5, crossNic 0, nChannels 0, bw 0.000000/0.000000, type NVL/PIX, sameChannels 0
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Could not find a path for pattern 4, falling back to simple order
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Pattern 4, crossNic 0, nChannels 1, bw 0.100000/0.100000, type SYS/SYS, sameChannels 1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO  0 : GPU/0-806000 GPU/0-906000 GPU/0-1806000 GPU/0-1906000 GPU/1-806000 GPU/1-906000 GPU/1-1806000 GPU/1-1906000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Pattern 1, crossNic 0, nChannels 1, bw 90.000000/90.000000, type C2C/PIX, sameChannels 1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO  0 : GPU/0-906000 GPU/0-806000 GPU/1-1906000 GPU/1-1806000 GPU/1-906000 GPU/1-806000 GPU/0-1906000 GPU/0-1806000
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Pattern 5, crossNic 0, nChannels 0, bw 0.000000/0.000000, type NVL/PIX, sameChannels 0
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO comm 0xc7a5ddf6f960 rank 5 nRanks 8 nNodes 1 localRanks 8 localRank 5 MNNVL 1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO comm 0xc6963bd76ca0 rank 4 nRanks 8 nNodes 1 localRanks 8 localRank 4 MNNVL 1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO comm 0xb60f30db6a50 rank 3 nRanks 8 nNodes 1 localRanks 8 localRank 3 MNNVL 1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO comm 0xc6928b1b7210 rank 6 nRanks 8 nNodes 1 localRanks 8 localRank 6 MNNVL 1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO comm 0xb905d42d6ad0 rank 7 nRanks 8 nNodes 1 localRanks 8 localRank 7 MNNVL 1
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Ring 00 : 6 -> 7 -> 0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Ring 01 : 6 -> 7 -> 0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Trees [0] 6/-1/-1->7->0 [1] 6/-1/-1->7->0
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO P2P Chunksize set to 131072
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Ring 00 : 4 -> 5 -> 6
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Ring 01 : 4 -> 5 -> 6
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Trees [0] 4/-1/-1->5->6 [1] 4/-1/-1->5->6
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO P2P Chunksize set to 131072
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Ring 00 : 5 -> 6 -> 7
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Ring 01 : 5 -> 6 -> 7
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Trees [0] 5/-1/-1->6->7 [1] 5/-1/-1->6->7
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO P2P Chunksize set to 131072
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Ring 00 : 3 -> 4 -> 5
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Ring 01 : 3 -> 4 -> 5
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Trees [0] 3/-1/-1->4->5 [1] 3/-1/-1->4->5
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO P2P Chunksize set to 131072
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 1
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 1
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 1
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO comm 0xbe73c2986c10 rank 2 nRanks 8 nNodes 1 localRanks 8 localRank 2 MNNVL 1
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Ring 00 : 2 -> 3 -> 4
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Ring 01 : 2 -> 3 -> 4
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Trees [0] 2/-1/-1->3->4 [1] 2/-1/-1->3->4
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO P2P Chunksize set to 131072
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Ring 00 : 1 -> 2 -> 3
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Ring 01 : 1 -> 2 -> 3
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Trees [0] -1/-1/-1->2->3 [1] -1/-1/-1->2->3
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO P2P Chunksize set to 131072
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO comm 0xac6eb2f26730 rank 1 nRanks 8 nNodes 1 localRanks 8 localRank 1 MNNVL 1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Tree 0 : -1 -> 1 -> 0/-1/-1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Tree 1 : -1 -> 1 -> 0/-1/-1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO comm 0xaee4e94f38b0 rank 0 nRanks 8 nNodes 1 localRanks 8 localRank 0 MNNVL 1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Tree 0 : 1 -> 0 -> 7/-1/-1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Tree 1 : 1 -> 0 -> 7/-1/-1
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Ring 00 : 0 -> 1 -> 2
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Ring 01 : 0 -> 1 -> 2
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Trees [0] 0/-1/-1->1->-1 [1] 0/-1/-1->1->-1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO P2P Chunksize set to 131072
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Channel 00/02 : 0 1 2 3 4 5 6 7
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Channel 01/02 : 0 1 2 3 4 5 6 7
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Ring 00 : 7 -> 0 -> 1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Ring 01 : 7 -> 0 -> 1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Trees [0] 7/-1/-1->0->1 [1] 7/-1/-1->0->1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO P2P Chunksize set to 131072
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 1
+pod4-gb300-3-tray05-f3:3010751:3010954 [0] NCCL INFO [Proxy Service] Device 3 CPU core 76
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 1
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 1
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 1
+pod4-gb300-3-tray05-f3:3010750:3010955 [0] NCCL INFO [Proxy Service] Device 2 CPU core 86
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ncclP2pSchedule: group size used is 8
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ncclP2pSchedule: group size used is 8
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ncclP2pSchedule: group size used is 8
+pod4-gb300-3-tray04-f3:1177002:1177211 [0] NCCL INFO [Proxy Service] Device 0 CPU core 9
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ncclP2pSchedule: group size used is 8
+pod4-gb300-3-tray04-f3:1177003:1177212 [0] NCCL INFO [Proxy Service] Device 1 CPU core 68
+pod4-gb300-3-tray04-f3:1177004:1177210 [0] NCCL INFO [Proxy Service] Device 2 CPU core 74
+pod4-gb300-3-tray04-f3:1177002:1177215 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 10
+pod4-gb300-3-tray05-f3:3010751:3010958 [0] NCCL INFO [Proxy Service UDS] Device 3 CPU core 77
+pod4-gb300-3-tray05-f3:3010749:3010956 [0] NCCL INFO [Proxy Service] Device 1 CPU core 3
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ncclP2pSchedule: group size used is 8
+pod4-gb300-3-tray04-f3:1177003:1177216 [0] NCCL INFO [Proxy Service UDS] Device 1 CPU core 69
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ncclP2pSchedule: group size used is 8
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ncclP2pSchedule: group size used is 8
+pod4-gb300-3-tray05-f3:3010748:3010959 [0] NCCL INFO [Proxy Service] Device 0 CPU core 4
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ncclP2pSchedule: group size used is 8
+pod4-gb300-3-tray04-f3:1177005:1177209 [0] NCCL INFO [Proxy Service] Device 3 CPU core 72
+pod4-gb300-3-tray05-f3:3010750:3010957 [0] NCCL INFO [Proxy Service UDS] Device 2 CPU core 88
+pod4-gb300-3-tray05-f3:3010748:3010961 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 6
+pod4-gb300-3-tray05-f3:3010749:3010960 [0] NCCL INFO [Proxy Service UDS] Device 1 CPU core 5
+pod4-gb300-3-tray04-f3:1177005:1177214 [0] NCCL INFO [Proxy Service UDS] Device 3 CPU core 75
+pod4-gb300-3-tray04-f3:1177004:1177213 [0] NCCL INFO [Proxy Service UDS] Device 2 CPU core 75
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO CC Off, workFifoBytes 1048576
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ncclCommInitRankConfig comm 0xc7a5ddf6f960 rank 5 nranks 8 cudaDev 1 nvmlDev 1 busId 906000 commId 0xREDACTED - Init COMPLETE
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ncclCommInitRankConfig comm 0xb60f30db6a50 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId 1906000 commId 0xREDACTED - Init COMPLETE
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Init timings - ncclCommInitRankConfig: rank 3 nranks 8 total 1.30 (kernels 1.05, alloc 0.18, bootstrap 0.01, allgathers 0.01, topo 0.04, graphs 0.00, connections 0.01, rest 0.00)
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ncclCommInitRankConfig comm 0xb905d42d6ad0 rank 7 nranks 8 cudaDev 3 nvmlDev 3 busId 1906000 commId 0xREDACTED - Init COMPLETE
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Init timings - ncclCommInitRankConfig: rank 7 nranks 8 total 1.30 (kernels 1.05, alloc 0.18, bootstrap 0.00, allgathers 0.01, topo 0.04, graphs 0.00, connections 0.01, rest 0.00)
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 5 nranks 8 total 1.30 (kernels 1.05, alloc 0.19, bootstrap 0.00, allgathers 0.01, topo 0.04, graphs 0.00, connections 0.01, rest 0.00)
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ncclCommInitRankConfig comm 0xc6928b1b7210 rank 6 nranks 8 cudaDev 2 nvmlDev 2 busId 1806000 commId 0xREDACTED - Init COMPLETE
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Init timings - ncclCommInitRankConfig: rank 6 nranks 8 total 1.30 (kernels 1.05, alloc 0.18, bootstrap 0.01, allgathers 0.01, topo 0.04, graphs 0.00, connections 0.01, rest 0.01)
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ncclCommInitRankConfig comm 0xc6963bd76ca0 rank 4 nranks 8 cudaDev 0 nvmlDev 0 busId 806000 commId 0xREDACTED - Init COMPLETE
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 4 nranks 8 total 1.30 (kernels 1.04, alloc 0.19, bootstrap 0.00, allgathers 0.01, topo 0.04, graphs 0.00, connections 0.01, rest 0.00)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ncclCommInitRankConfig comm 0xbe73c2986c10 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId 1806000 commId 0xREDACTED - Init COMPLETE
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ncclCommInitRankConfig comm 0xac6eb2f26730 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 906000 commId 0xREDACTED - Init COMPLETE
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 8 total 1.30 (kernels 1.05, alloc 0.18, bootstrap 0.01, allgathers 0.00, topo 0.04, graphs 0.00, connections 0.01, rest 0.00)
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Init timings - ncclCommInitRankConfig: rank 2 nranks 8 total 1.30 (kernels 1.05, alloc 0.18, bootstrap 0.01, allgathers 0.00, topo 0.04, graphs 0.00, connections 0.01, rest 0.00)
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ncclCommInitRankConfig comm 0xaee4e94f38b0 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 806000 commId 0xREDACTED - Init COMPLETE
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 8 total 1.30 (kernels 1.05, alloc 0.17, bootstrap 0.01, allgathers 0.00, topo 0.05, graphs 0.00, connections 0.01, rest 0.01)
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong 
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)         
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Symmetric VA size=280GB
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Channel 00/0 : 7[3] -> 0[0] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Channel 00/0 : 6[2] -> 7[3] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Channel 00/0 : 3[3] -> 4[0] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Channel 00/0 : 5[1] -> 6[2] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Channel 00/0 : 4[0] -> 5[1] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Channel 01/0 : 6[2] -> 7[3] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Channel 01/0 : 7[3] -> 0[0] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Channel 01/0 : 5[1] -> 6[2] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Channel 01/0 : 4[0] -> 5[1] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Channel 01/0 : 3[3] -> 4[0] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Channel 00/0 : 6[2] -> 5[1] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Channel 00/0 : 5[1] -> 4[0] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Channel 00/0 : 0[0] -> 7[3] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Channel 00/0 : 7[3] -> 6[2] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Channel 01/0 : 6[2] -> 5[1] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Channel 00/0 : 4[0] -> 3[3] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Channel 01/0 : 5[1] -> 4[0] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Channel 01/0 : 0[0] -> 7[3] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Channel 01/0 : 7[3] -> 6[2] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/MNNVL
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Channel 01/0 : 4[0] -> 3[3] via P2P/MNNVL
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO Connected all trees
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO Connected all trees
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO Connected all trees
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO Connected all trees
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO Connected all trees
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO Connected all trees
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO Connected all trees
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO Connected all trees
+   536870912     134217728     float     sum      -1   107485    4.99    8.74    N/A   165044    3.25    5.69    N/A
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO comm 0xac6eb2f26730 rank 1 nranks 8 cudaDev 1 busId 906000 - Destroy COMPLETE
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO comm 0xc6928b1b7210 rank 6 nranks 8 cudaDev 2 busId 1806000 - Destroy COMPLETE
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO comm 0xaee4e94f38b0 rank 0 nranks 8 cudaDev 0 busId 806000 - Destroy COMPLETE
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO comm 0xb905d42d6ad0 rank 7 nranks 8 cudaDev 3 busId 1906000 - Destroy COMPLETE
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 7.21676 
+#
+# Collective test concluded: all_reduce_perf
+#
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO comm 0xbe73c2986c10 rank 2 nranks 8 cudaDev 2 busId 1806000 - Destroy COMPLETE
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO comm 0xc7a5ddf6f960 rank 5 nranks 8 cudaDev 1 busId 906000 - Destroy COMPLETE
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO comm 0xb60f30db6a50 rank 3 nranks 8 cudaDev 3 busId 1906000 - Destroy COMPLETE
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO comm 0xc6963bd76ca0 rank 4 nranks 8 cudaDev 0 busId 806000 - Destroy COMPLETE
+
+pod4-gb300-3-tray05-f3:3010750:3010750 [2] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault
+pod4-gb300-3-tray05-f3:3010751:3010751 [3] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault
+pod4-gb300-3-tray04-f3:1177003:1177003 [1] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault
+pod4-gb300-3-tray04-f3:1177002:1177002 [0] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault
+pod4-gb300-3-tray04-f3:1177005:1177005 [3] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault
+pod4-gb300-3-tray04-f3:1177004:1177004 [2] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault
+pod4-gb300-3-tray05-f3:3010749:3010749 [1] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault
+pod4-gb300-3-tray05-f3:3010748:3010748 [0] NCCL INFO ENV/Plugin: Closing env plugin ncclEnvDefault
