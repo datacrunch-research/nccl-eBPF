@@ -27,3 +27,9 @@ Rules of the road:
   upstream PRs clean. New agent artifacts go here, never in `docs/tmp/`.
 - Nothing in `.agents/` is shipped code or user documentation; user-facing docs live in
   `docs/` (this fork's evaluation docs: `docs/gb300/`).
+- **Redaction rule (public fork):** before committing any log, topology dump, or
+  report, scrub site identifiers — internal IP addresses, NIC GUIDs, fabric/cluster
+  UUIDs, host hashes, usernames. Keep what reproducibility needs (software versions,
+  PCI layout, hostnames' tray-number semantics). Verify with:
+  `git grep -nE '10\.[0-9]+\.[0-9]+\.[0-9]+|guid="0x|host_hash="0x' -- .agents docs`
+  before pushing. Rationale: benchmark artifacts double as reconnaissance material.
