@@ -12,7 +12,7 @@
 # Env overrides (defaults in parentheses):
 #   TRAYS       trays to use, 4 ranks each (1)
 #   TRAY_LIST   explicit tray ids, e.g. "01 03 17" (first TRAYS live trays)
-#   SKIP_TRAYS  dead trays, space-separated ("16")
+#   SKIP_TRAYS  degraded/dead trays, space-separated ("03 14 16")
 #   RACK        rack prefix (pod4-gb300-3)
 #   TEST        nccl-tests binary name (all_reduce_perf)
 #   BIN_DIR     nccl-tests build dir (~/nccl-tests/build_mpi)
@@ -40,7 +40,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 TRAYS="${TRAYS:-1}"
 TRAY_LIST="${TRAY_LIST:-}"
-SKIP_TRAYS="${SKIP_TRAYS:-16}"
+SKIP_TRAYS="${SKIP_TRAYS:-03 14 16}"
 RACK="${RACK:-pod4-gb300-3}"
 TEST="${TEST:-all_reduce_perf}"
 BIN_DIR="${BIN_DIR:-$HOME/nccl-tests/build_mpi}"

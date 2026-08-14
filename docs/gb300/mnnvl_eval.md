@@ -142,7 +142,7 @@ Env-forcing `NCCL_ALGO=NVLSTree` fails with "invalid usage" at every multi-tray 
 
 ## M2: rackscale ladder
 
-Status: complete for w8/w16/w32 (exclusive slurm allocation, job 47899, 179 runs, 2026-08-14 14:18-15:07 UTC); w64 re-queued (the campaign's own w64 block tripped the occupancy guard on its just-finished w32 ranks — guard now has a settle-retry window).
+Status: complete for w8/w16/w32 (exclusive slurm allocation, job 47899, 179 runs, 2026-08-14 14:18-15:07 UTC). The first 16-tray block (job 47925) produced a rack-scale repeat of the silent-collapse family — root-caused the same day to **a second degraded GPU: tray14 GPU3, zero NVLinks in the fused topology** (`rank=51, busid 0019:06:00.0`; pair test 82 GB/s and `12 coll / 0 nvls` vs ~700 GB/s healthy pairs; 12-tray control without it fully healthy at 48 ranks, so no NCCL-at-scale issue). Quieter variant than tray03: `nvidia-smi` does not hang and the graph keeps 12 channels instead of the 1x2 fallback; the invariant signature is `0 nvls channels` + channel count far below 32. Affected w64 data quarantined (`results/w64_tray14_incident/`); healthy maximum is now 15 trays and the max-scale block reruns as **w60**. Full analysis in the [incident dossier addendum](../../.agents/debug/2026-08-14-mnnvl-channel-collapse/report.md).
 
 ### Headline: the exploit closes with scale
 

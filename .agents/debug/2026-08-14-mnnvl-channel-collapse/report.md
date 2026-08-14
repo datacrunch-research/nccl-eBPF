@@ -598,3 +598,39 @@ The placement of the first warning is intentional. At `nccl/src/graph/topo.cc:15
 The second warning is guarded by the old `comm->nvlsSupport` value. It therefore fires only on the meaningful transition from provisionally supported (`nccl/src/transport/nvls.cc:156-203`) to graph-disabled (`nccl/src/init.cc:1273`), not on systems that never advertised multicast support. Keeping the actual clears after the warning preserves behavior exactly.
 
 This diff is a report-only draft. It was not applied to the retained NCCL tree and was not committed. The temporary fault-injection source change described in item 1 was also reverted. `git status --short` in `nccl/` is empty at the end of the investigation; the shared production build at `nccl/build/lib` was never rebuilt or replaced.
+
+---
+
+# Addendum 2026-08-14 (late): second degraded GPU — tray14 GPU3, quieter variant
+
+The w64 (16-tray) campaign block reproduced the collapse family at rack scale:
+AllReduce 208 GB/s @8G (vs 680 at w32), ~5 GB/s at small sizes, `NCCL_ALGO=NVLS`
+rejected as invalid usage, "12 coll channels, 12 collnet channels, 0 nvls channels".
+
+A slurm diagnostic (job 47967: pair tests + instrumented w64 + control) resolved it in
+one pass:
+
+- Pair tray06+tray14: `12 coll / 0 nvls`, 81.7 GB/s. Pairs with trays 15/17/18: healthy
+  (`32 coll / 24 nvls`, ~700 GB/s).
+- Fused-topology dump of the 64-rank communicator: `rank=51 dev=3 busid 0019:06:00.0`
+  (tray14 GPU3) has **zero `<nvlink>` entries**; the other 63 GPUs have 18.
+- 12-tray control without trays 14/15/17/18: healthy, `32/24`, 557 GB/s @512M at 48
+  ranks — so no NCCL-at-16-hosts problem; the clique fusion and NVLS are fine at 48
+  ranks with all-healthy members.
+
+Differences from the tray03 case:
+
+1. **Quieter failure**: `nvidia-smi nvlink -s` does NOT hang on tray14 (it hangs on
+   tray03). Detection required the fused-topo/channel-line recipe — reinforcing that
+   the recipe, not ad-hoc smi probing, is the reliable check.
+2. **Milder graph damage**: 12 search channels survive instead of the 1x2 emergency
+   fallback — consistent with the ring search still closing reduced rings through the
+   degraded GPU's C2C path while NVLS (which needs NVS capacity to every GPU) still
+   drops to zero. The severity of the collapse varies with what the sick GPU's
+   remaining paths permit; the invariant signature is `0 nvls channels` plus a
+   channel count far below 32.
+
+Operational state: rack now has three excluded trays (03: GPU1 NVLink dead, smi hangs;
+14: GPU3 NVLink dead, smi responsive; 16: node down). Healthy maximum is 15 trays =
+w60. Both degraded GPUs need the driver/host reset + re-dump verification described in
+the recommendations above.
