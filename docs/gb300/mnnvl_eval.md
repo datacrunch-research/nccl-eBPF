@@ -1,6 +1,6 @@
 # NCCLbpf on GB300 NVL72: eBPF policies for NCCL over MNNVL
 
-Status: in progress (2026-08-14). M0/M1 complete. M2 rackscale sweeps running. M3 pending M2 data.
+Status: complete (2026-08-14). M0-M3 done: aarch64 port + paper harness, single-tray repro, rackscale ladder w8/w16/w32/w60 (AllReduce + AllGather + AlltoAll), and the guarded `nvl72_size_aware` policy validated at every scale.
 
 We reproduce the evaluation of NCCLbpf [1] and scale it from the paper's single-node 8x B300 to our GB300 NVL72 rack. Goal: measure the value of eBPF as an extension and observability mechanism for GPU communication, focused on the MNNVL scale-up domain. The paper names our exact setting as its missing validation: "multi-node experiments with larger rank counts are needed."
 
@@ -142,7 +142,11 @@ Env-forcing `NCCL_ALGO=NVLSTree` fails with "invalid usage" at every multi-tray 
 
 ## M2: rackscale ladder
 
-Status: complete for w8/w16/w32 (exclusive slurm allocation, job 47899, 179 runs, 2026-08-14 14:18-15:07 UTC). The first 16-tray block (job 47925) produced a rack-scale repeat of the silent-collapse family — root-caused the same day to **a second degraded GPU: tray14 GPU3, zero NVLinks in the fused topology** (`rank=51, busid 0019:06:00.0`; pair test 82 GB/s and `12 coll / 0 nvls` vs ~700 GB/s healthy pairs; 12-tray control without it fully healthy at 48 ranks, so no NCCL-at-scale issue). Quieter variant than tray03: `nvidia-smi` does not hang and the graph keeps 12 channels instead of the 1x2 fallback; the invariant signature is `0 nvls channels` + channel count far below 32. Affected w64 data quarantined (`results/w64_tray14_incident/`); healthy maximum is now 15 trays and the max-scale block reruns as **w60**. Full analysis in the [incident dossier addendum](../../.agents/debug/2026-08-14-mnnvl-channel-collapse/report.md).
+Status: complete for w8/w16/w32 (exclusive slurm allocation, job 47899, 179 runs, 2026-08-14 14:18-15:07 UTC). The first 16-tray block (job 47925) produced a rack-scale repeat of the silent-collapse family — root-caused the same day to **a second degraded GPU: tray14 GPU3, zero NVLinks in the fused topology** (`rank=51, busid 0019:06:00.0`; pair test 82 GB/s and `12 coll / 0 nvls` vs ~700 GB/s healthy pairs; 12-tray control without it fully healthy at 48 ranks, so no NCCL-at-scale issue). Quieter variant than tray03: `nvidia-smi` does not hang and the graph keeps 12 channels instead of the 1x2 fallback; the invariant signature is `0 nvls channels` + channel count far below 32. Affected w64 data quarantined (`results/w64_tray14_incident/`); healthy maximum is now 15 trays and the max-scale block reran as **w60** (job 47970, 45 runs, clean). Full analysis in the [incident dossier addendum](../../.agents/debug/2026-08-14-mnnvl-channel-collapse/report.md).
+
+### w60 (15 trays, max healthy scale): everything confirms
+
+AllReduce: baseline == env NVLS at every size (86 GB/s @4M rising to **689 GB/s @8G**); Ring loses everywhere (down to -58% mid-range); the un-guarded `nvlink_ring_mid_v2` costs -66% @4M and -75% @64M where it fires. **`nvl72_size_aware` tracks baseline within run-to-run spread at every size** — the r>8 no-override branch is now validated at w16, w32, and w60. AllGather: default == Ring == policy (no headroom, ~496 GB/s @8G); env-forced NVLS AllGather is rejected as invalid usage at 60 ranks (non-power-of-2; it ran at 8/16/32 — the default simply never selects it there). AlltoAll: baseline == noop within noise (455 GB/s @8G). Small-message noop delta: mean -0.2 us over 16 sizes (single-size spread grows to ~3 us at 60 ranks, sign-alternating — still no resolvable fixed cost).
 
 ### Headline: the exploit closes with scale
 
