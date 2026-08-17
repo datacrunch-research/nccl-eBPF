@@ -9,12 +9,11 @@ Layout:
 - **`notes/`** — Agent Notes: decision records and proposals (RFCs written by agents).
   Format and lifecycle rules in [notes/README.md](notes/README.md). Every non-trivial
   change should add or update one in the same commit series.
-- **`journal/`** — the working track record, one dated file per working session
-  (`yyyy-mm-dd-topic.md`): what was done in what order, what failed or was retracted
-  and why, dead ends, and links to the notes/dossiers/commits it produced. This is
-  the resumption surface: a session's running record belongs here in the repo, not in
-  any agent's private memory or chat scrollback. **Closing a working session without
-  its journal entry is an incomplete session.** *(Our extension.)*
+- There is deliberately **no journal or index**: the working record is carried the
+  upstream way — one Agent Note per decision (including retracted or refuted ones,
+  with the refutation), `proposed/` notes for future work, dossiers for
+  investigations, and git history for the timeline. A session is closed when its
+  decisions are noted, not when a diary is written.
 - **`debug/`** — investigation dossiers: one dated directory per incident/root-cause
   session (`yyyy-mm-dd-topic/`), holding the report (`report.md`) plus its evidence
   (topology dumps, repro logs). These are agent-to-agent handoff artifacts: a later
