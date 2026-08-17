@@ -1,0 +1,5 @@
+# NOTE: git-lfs is unusable in this repo while it is a public fork - GitHub
+# forks share the parent repo's LFS storage and only parent-repo writers can
+# upload objects ("can not upload new objects to public fork"). Logs under
+# .agents/ stay plain git (currently ~2 MB total). Re-enable LFS only if this
+# repo is ever detached from the fork network.

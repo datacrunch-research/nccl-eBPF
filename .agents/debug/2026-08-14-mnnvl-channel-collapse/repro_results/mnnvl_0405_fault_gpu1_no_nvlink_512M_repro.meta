@@ -1,0 +1,5 @@
+{"tag":"mnnvl_0405_fault_gpu1_no_nvlink_512M_repro","ts":"2026-08-14T12:13:44+00:00","test":"all_reduce_perf","world":8,"trays":"04 05",
+ "arm":"baseline","arm_kind":"baseline","policy":"","algo":"","proto":"",
+ "profiler":"none","max_nch":"","iters":20,"warmup":5,"check":0,
+ "msg":"512M..512M f2","rep":1,"nccl":"NCCL version 2.29.7+cuda13.1","nccl_lib_dir":"/mnt/shared/home/dc/nccl-eBPF/nccl/build/lib",
+ "plugin_sha":"0cbd56e","bin":"/mnt/shared/home/dc/nccl-tests/build_mpi/all_reduce_perf"}

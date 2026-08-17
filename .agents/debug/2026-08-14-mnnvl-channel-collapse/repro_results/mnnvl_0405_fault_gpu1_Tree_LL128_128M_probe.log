@@ -1,0 +1,41 @@
+# nccl-tests version 2.18.5 nccl-headers=22903 nccl-library=22907
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 1 minBytes 134217728 maxBytes 134217728 step: 2(factor) warmup iters: 2 iters: 5 agg iters: 1 validation: 0 graph: 0 unalign: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 1186349 on pod4-gb300-3-tray04-f3 device  0 [0008:06:00] NVIDIA GB300
+#  Rank  1 Group  0 Pid 1186350 on pod4-gb300-3-tray04-f3 device  1 [0009:06:00] NVIDIA GB300
+#  Rank  2 Group  0 Pid 1186351 on pod4-gb300-3-tray04-f3 device  2 [0018:06:00] NVIDIA GB300
+#  Rank  3 Group  0 Pid 1186352 on pod4-gb300-3-tray04-f3 device  3 [0019:06:00] NVIDIA GB300
+#  Rank  4 Group  0 Pid 3021342 on pod4-gb300-3-tray05-f3 device  0 [0008:06:00] NVIDIA GB300
+#  Rank  5 Group  0 Pid 3021343 on pod4-gb300-3-tray05-f3 device  1 [0009:06:00] NVIDIA GB300
+#  Rank  6 Group  0 Pid 3021344 on pod4-gb300-3-tray05-f3 device  2 [0018:06:00] NVIDIA GB300
+#  Rank  7 Group  0 Pid 3021345 on pod4-gb300-3-tray05-f3 device  3 [0019:06:00] NVIDIA GB300
+NCCL version 2.29.7+cuda13.1
+
+[2026-08-14 12:16:57] pod4-gb300-3-tray05-f3:3021344:3021344 [2] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:16:57] pod4-gb300-3-tray05-f3:3021343:3021343 [1] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:16:57] pod4-gb300-3-tray05-f3:3021345:3021345 [3] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:16:57] pod4-gb300-3-tray04-f3:1186349:1186349 [0] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:16:57] pod4-gb300-3-tray05-f3:3021342:3021342 [0] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:16:57] pod4-gb300-3-tray04-f3:1186350:1186350 [1] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:16:57] pod4-gb300-3-tray04-f3:1186352:1186352 [3] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+
+[2026-08-14 12:16:57] pod4-gb300-3-tray04-f3:1186351:1186351 [2] ras/client_support.cc:181 NCCL WARN Call to bind failed: Address already in use
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong 
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)         
+   134217728      33554432     float     sum      -1  53221.9    2.52    4.41    N/A  49968.1    2.69    4.70    N/A
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 4.55693 
+#
+# Collective test concluded: all_reduce_perf
+#
+

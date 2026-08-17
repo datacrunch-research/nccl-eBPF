@@ -1,0 +1,5 @@
+{"tag":"mnnvl_0405_fault_rank5_discovery_skip_512M","ts":"2026-08-14T12:27:24+00:00","test":"all_reduce_perf","world":8,"trays":"04 05",
+ "arm":"baseline","arm_kind":"baseline","policy":"","algo":"","proto":"",
+ "profiler":"none","max_nch":"","iters":20,"warmup":5,"check":0,
+ "msg":"512M..512M f2","rep":1,"nccl":"NCCL version 2.29.7+cuda13.1","nccl_lib_dir":"/mnt/shared/home/dc/nccl-eBPF/docs/tmp/nccl-fi-build/lib",
+ "plugin_sha":"00fb633","bin":"/mnt/shared/home/dc/nccl-tests/build_mpi/all_reduce_perf"}
