@@ -1,10 +1,10 @@
-# Agent Note: upstream contributions from the GB300 campaign
+# Agent Note: upstream contributions from the GB300 evaluation
 
 Status: proposed
 
 ## Problem
 
-The rackscale campaign produced fixes and findings whose natural home is upstream, not
+The rackscale evaluation produced fixes and findings whose natural home is upstream, not
 this fork. Left only here, they rot as the fork drifts: eunomia-bpf/nccl-eBPF keeps
 shipping a CMake that omits its own paper's headline policy, NCCL keeps degrading 12x
 silently when a clique GPU loses NVLink, and the arm64 build path stays unvalidated

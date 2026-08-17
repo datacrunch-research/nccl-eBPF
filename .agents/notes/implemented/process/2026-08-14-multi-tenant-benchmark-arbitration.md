@@ -8,7 +8,7 @@ Benchmarks on a shared NVL72 rack raced a colleague's serving jobs twice in one 
 First a 16-tray job started mid-sweep and silently turned two scale ladders into
 plausible-looking contention noise (bimodal "instability", fake crossovers, a fake
 +78% policy win) — caught only by a post-hoc timestamp audit against `scontrol`;
-109 runs quarantined. Then the reverse: our own campaign blocked a fresh window and
+109 runs quarantined. Then the reverse: our own evaluation blocked a fresh window and
 aborted 100+ runs. Direct `mpirun -H` bypasses slurm, so neither side gets warned.
 The failure mode is not lost time; it is **wrong numbers that look right**.
 
@@ -20,9 +20,9 @@ Two layers:
    tray and refuse to launch if any GPU has compute processes. Retries for
    `PREFLIGHT_WAIT` (60 s default) before failing — back-to-back runs briefly see
    their own predecessor's draining ranks (this self-collision aborted the first
-   campaign's w64 block). `FORCE=1` overrides.
-2. Campaigns run inside an **exclusive slurm allocation**
-   (`campaign_sbatch.sh` in the scaling-inference repo: `-N16 --exclusive`, tray03/16
+   evaluation's w64 block). `FORCE=1` overrides.
+2. Evaluations run inside an **exclusive slurm allocation**
+   (`eval_sbatch.sh` in the scaling-inference repo: `-N16 --exclusive`, tray03/16
    excluded, tray list derived from `$SLURM_JOB_NODELIST`), so slurm arbitrates
    between benchmarks and serving jobs; the per-run guard stays as belt-and-braces.
 

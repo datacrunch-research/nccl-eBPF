@@ -99,7 +99,7 @@ Raw logs + meta sidecars live in the scaling-inference repo: `gb300/scripts/coll
 
 ## 9. Next
 
-M2: clean w8-env/w16/w32/w64 ladders, small-message overhead vs world size, AllGather variance, divergence-hazard demo (campaign scripted, waiting on a rack window behind a colleague's wideEP ablations). M3: validate `nvl72_size_aware` per-scale windows on clean data; hot-swap demo at max world.
+M2: clean w8-env/w16/w32/w64 ladders, small-message overhead vs world size, AllGather variance, divergence-hazard demo (evaluation scripted, waiting on a rack window behind a colleague's wideEP ablations). M3: validate `nvl72_size_aware` per-scale windows on clean data; hot-swap demo at max world.
 
 ## References
 

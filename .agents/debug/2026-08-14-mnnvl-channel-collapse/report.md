@@ -603,7 +603,7 @@ This diff is a report-only draft. It was not applied to the retained NCCL tree a
 
 # Addendum 2026-08-14 (late): second degraded GPU — tray14 GPU3, quieter variant
 
-The w64 (16-tray) campaign block reproduced the collapse family at rack scale:
+The w64 (16-tray) evaluation block reproduced the collapse family at rack scale:
 AllReduce 208 GB/s @8G (vs 680 at w32), ~5 GB/s at small sizes, `NCCL_ALGO=NVLS`
 rejected as invalid usage, "12 coll channels, 12 collnet channels, 0 nvls channels".
 
