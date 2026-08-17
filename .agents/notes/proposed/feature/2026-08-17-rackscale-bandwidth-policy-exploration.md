@@ -70,3 +70,7 @@ registered-buffer + channels + chunk-size evaluation at w60/w8.** Concretely:
 - Jumping straight to overlap-aware serving policies (Q4) — deferred: highest ceiling
   but needs serving integration and divergence-safe adaptive design; the Q1/Q2
   evaluation is days-scale and informs whether static bandwidth policies exist at all.
+
+## References
+
+- Tracking PR: [datacrunch-research/nccl-eBPF#1](https://github.com/datacrunch-research/nccl-eBPF/pull/1); roadmap entry: [findings comment](https://github.com/datacrunch-research/nccl-eBPF/pull/1#issuecomment-5315577928).

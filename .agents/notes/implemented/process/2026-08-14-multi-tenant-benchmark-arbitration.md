@@ -41,3 +41,7 @@ Two layers:
   version, plugin SHA) so a timestamp audit is always possible after the fact.
 - Quarantined data is retained (`results/contaminated_*/` in the scaling-inference
   repo), never deleted: refuted conclusions stay traceable to their bad inputs.
+
+## References
+
+- Landed via [datacrunch-research/nccl-eBPF#1](https://github.com/datacrunch-research/nccl-eBPF/pull/1).

@@ -35,3 +35,7 @@ from a real domain count. Verified live on GB300: NCCL 2.29.7 populates
   [nvl72_size_aware note](../feature/2026-08-14-nvl72-size-aware-policy.md).
 - The ABI append pattern is now the precedent for future context growth: extend after
   the last field, never reorder, zero means unknown.
+
+## References
+
+- Landed via [datacrunch-research/nccl-eBPF#1](https://github.com/datacrunch-research/nccl-eBPF/pull/1).

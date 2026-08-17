@@ -48,3 +48,7 @@ ranks compute identical actions and cannot diverge-hang. Evidence tables:
   (`scripts/nccl_bench.sh`), refit windows from the per-size table, keep the guards.
 - Depends on the
   [NVL-domain context note](../architecture/2026-08-14-nvl-domain-info-in-policy-context.md).
+
+## References
+
+- Landed via [datacrunch-research/nccl-eBPF#1](https://github.com/datacrunch-research/nccl-eBPF/pull/1).

@@ -37,3 +37,7 @@ Three tracks, independent, in priority order:
   mechanism (guards + measured windows) generalizes, the thresholds do not. Likely
   ship as an example with a "derive your own windows" README rather than as defaults.
 - Timing of (1d) relative to the owners' eBPF '26 camera-ready.
+
+## References
+
+- Tracking PR: [datacrunch-research/nccl-eBPF#1](https://github.com/datacrunch-research/nccl-eBPF/pull/1); roadmap entry: [findings comment](https://github.com/datacrunch-research/nccl-eBPF/pull/1#issuecomment-5315577928).

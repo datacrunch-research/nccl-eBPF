@@ -65,3 +65,7 @@ Also: extend `supercomputing/install_nv_driver.md` with the GB300/sbsa section
   (Verify at P0 start; the x86 recipe is confirmed.)
 - NCCL 2.31.2 tuner/profiler ABI versions vs our plugin (v5/v6) — rebuild vs port.
 - Mixed R595/R610 IMEX clique behavior (P1 answers empirically).
+
+## References
+
+- Tracking PR: [datacrunch-research/nccl-eBPF#1](https://github.com/datacrunch-research/nccl-eBPF/pull/1); roadmap entry: [findings comment](https://github.com/datacrunch-research/nccl-eBPF/pull/1#issuecomment-5315577928).
