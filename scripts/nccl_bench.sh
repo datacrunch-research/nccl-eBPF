@@ -187,7 +187,7 @@ do_run() {
     nccl_ver=$(grep -m1 -oE 'NCCL version [0-9.+a-z]+' "$log" || true)
     plugin_sha=$(git -C "$HOME/nccl-eBPF" rev-parse --short HEAD 2>/dev/null || echo none)
     cat >"$meta" <<EOF
-{"tag":"$tag","ts":"$(date -Is)","test":"$TEST","world":$world,"trays":"$TRAYS_USED",
+{"tag":"$tag","ts":"$(date -Is)","test":"$TEST","world":$world,"trays":"$TRAYS_USED","slurm_job":"${SLURM_JOB_ID:-}",
  "arm":"$ARM","arm_kind":"$ARM_KIND","policy":"$ARM_POLICY","algo":"${ARM_ALGO}","proto":"${ARM_PROTO}",
  "profiler":"$PROFILER","max_nch":"$MAX_NCH","iters":$ITERS,"warmup":$WARMUP,"check":$CHECK,
  "msg":"$MSG_MIN..$MSG_MAX f$FACTOR","rep":$REP,"nccl":"$nccl_ver","nccl_lib_dir":"$NCCL_LIB_DIR",
